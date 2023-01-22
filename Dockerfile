@@ -31,4 +31,3 @@ COPY --from=builder /server/main /server/main
 EXPOSE 5000
 ENV PGPASSWORD forum
 CMD service postgresql start && psql -h localhost -d forum -U forum -p 5432 -a -q -f ./db/db.sql && ./main
-#CMD["./main"]
