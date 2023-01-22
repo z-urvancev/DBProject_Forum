@@ -57,7 +57,6 @@ create unlogged table if not exists user_forum
     constraint user_forum_key unique (nickname, forum)
 );
 
--- Триггеры и процедуры
 create or replace function create_user()
     returns trigger as
 $$

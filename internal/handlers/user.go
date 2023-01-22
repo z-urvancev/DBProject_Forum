@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"DBProject/pkg/errors"
+	"fmt"
 	"net/http"
 
 	"DBProject/internal/models"
@@ -31,11 +32,13 @@ func (uh *UserHandler) CreateUser(ctx *fasthttp.RequestCtx) {
 	user.Nickname = nickname
 	users, err := uh.userUseCase.CreateNewUser(&user)
 	if err != nil && errors.ConvertErrorToCode(err) != http.StatusConflict {
+		fmt.Println(err.Error())
 		errors.CreateErrorResponse(ctx, err)
 		return
 	}
 
 	if err != nil && errors.ConvertErrorToCode(err) == http.StatusConflict {
+		fmt.Println(err.Error())
 		usersJson, internalErr := jsoniter.Marshal(users)
 		if internalErr != nil {
 			errors.CreateErrorResponse(ctx, internalErr)

@@ -5,8 +5,8 @@ import (
 	"github.com/jackc/pgx"
 )
 
-func NewDB() (*pgx.ConnPool, error) {
-	conn, err := pgx.ParseConnectionString(fmt.Sprintf("postgres://%s:%s@%s:%s/%s?sslmode=disable", "forum", "forum", "forumPostgres", "5432", "forum"))
+func NewConnect() (*pgx.ConnPool, error) {
+	conn, err := pgx.ParseConnectionString(fmt.Sprintf("postgres://%s:%s@%s:%s/%s?sslmode=disable", "forum", "forum", "localhost", "5432", "forum"))
 
 	if err != nil {
 		return nil, err

@@ -7,14 +7,3 @@ services:
       context: .
     ports:
       - '5000:5000'
-  postgres:
-    image: postgres:latest
-    container_name: forumPostgres
-    environment:
-      POSTGRES_DB: "forum"
-      POSTGRES_USER: "forum"
-      POSTGRES_PASSWORD: "forum"
-    ports:
-      - '5432:5432'
-    volumes:
-      - ./data/db:/var/lib/postgresql/data2
